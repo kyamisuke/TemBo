@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8F11DE562975210200F2FD06 /* mahjang_calcuratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11DE552975210200F2FD06 /* mahjang_calcuratorApp.swift */; };
+		8F11DE582975210200F2FD06 /* CalcurateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11DE572975210200F2FD06 /* CalcurateView.swift */; };
+		8F11DE5A2975210400F2FD06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F11DE592975210400F2FD06 /* Assets.xcassets */; };
+		8F11DE5E2975210400F2FD06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F11DE5D2975210400F2FD06 /* Preview Assets.xcassets */; };
+		8F11DE682975210500F2FD06 /* mahjang_calcuratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11DE672975210500F2FD06 /* mahjang_calcuratorTests.swift */; };
+		8F11DE722975210500F2FD06 /* mahjang_calcuratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11DE712975210500F2FD06 /* mahjang_calcuratorUITests.swift */; };
+		8F11DE742975210500F2FD06 /* mahjang_calcuratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11DE732975210500F2FD06 /* mahjang_calcuratorUITestsLaunchTests.swift */; };
+		8F146234297A7DFD0046B6F7 /* ShipporiMincho-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F146232297A7DFC0046B6F7 /* ShipporiMincho-Bold.ttf */; };
+		8F146235297A7DFD0046B6F7 /* ShipporiMincho-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F146233297A7DFD0046B6F7 /* ShipporiMincho-Regular.ttf */; };
+		8F768C2029769F060061CFE2 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD81D13297686B70055E254 /* TitleView.swift */; };
+		8F7814A32977CFA3007B1DB0 /* BattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7814A22977CFA3007B1DB0 /* BattleView.swift */; };
+		8F7814A52977E66C007B1DB0 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7814A42977E66C007B1DB0 /* ColorExtension.swift */; };
+		8F7814A72977ED67007B1DB0 /* Calcurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7814A62977ED67007B1DB0 /* Calcurator.swift */; };
+		8FAC27C3297801FB00B68741 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAC27C2297801FB00B68741 /* CGPointExtension.swift */; };
+		8FF22ADB298BB79400072039 /* ScoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF22ADA298BB79400072039 /* ScoreDataModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8F11DE642975210500F2FD06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F11DE4A2975210200F2FD06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F11DE512975210200F2FD06;
+			remoteInfo = "mahjang-calcurator";
+		};
+		8F11DE6E2975210500F2FD06 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8F11DE4A2975210200F2FD06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F11DE512975210200F2FD06;
+			remoteInfo = "mahjang-calcurator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8F11DE522975210200F2FD06 /* mahjang-calcurator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mahjang-calcurator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F11DE552975210200F2FD06 /* mahjang_calcuratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mahjang_calcuratorApp.swift; sourceTree = "<group>"; };
+		8F11DE572975210200F2FD06 /* CalcurateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcurateView.swift; sourceTree = "<group>"; };
+		8F11DE592975210400F2FD06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8F11DE5B2975210400F2FD06 /* mahjang_calcurator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mahjang_calcurator.entitlements; sourceTree = "<group>"; };
+		8F11DE5D2975210400F2FD06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8F11DE632975210500F2FD06 /* mahjang-calcuratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mahjang-calcuratorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F11DE672975210500F2FD06 /* mahjang_calcuratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mahjang_calcuratorTests.swift; sourceTree = "<group>"; };
+		8F11DE6D2975210500F2FD06 /* mahjang-calcuratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mahjang-calcuratorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F11DE712975210500F2FD06 /* mahjang_calcuratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mahjang_calcuratorUITests.swift; sourceTree = "<group>"; };
+		8F11DE732975210500F2FD06 /* mahjang_calcuratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mahjang_calcuratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8F146232297A7DFC0046B6F7 /* ShipporiMincho-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShipporiMincho-Bold.ttf"; sourceTree = "<group>"; };
+		8F146233297A7DFD0046B6F7 /* ShipporiMincho-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ShipporiMincho-Regular.ttf"; sourceTree = "<group>"; };
+		8F7814A22977CFA3007B1DB0 /* BattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleView.swift; sourceTree = "<group>"; };
+		8F7814A42977E66C007B1DB0 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		8F7814A62977ED67007B1DB0 /* Calcurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calcurator.swift; sourceTree = "<group>"; };
+		8F86016F2975568C00E65C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8FAC27C2297801FB00B68741 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		8FD81D13297686B70055E254 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		8FF22ADA298BB79400072039 /* ScoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDataModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F11DE4F2975210200F2FD06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F11DE602975210500F2FD06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F11DE6A2975210500F2FD06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F11DE492975210200F2FD06 = {
+			isa = PBXGroup;
+			children = (
+				8F11DE542975210200F2FD06 /* mahjang-calcurator */,
+				8F11DE662975210500F2FD06 /* mahjang-calcuratorTests */,
+				8F11DE702975210500F2FD06 /* mahjang-calcuratorUITests */,
+				8F11DE532975210200F2FD06 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8F11DE532975210200F2FD06 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8F11DE522975210200F2FD06 /* mahjang-calcurator.app */,
+				8F11DE632975210500F2FD06 /* mahjang-calcuratorTests.xctest */,
+				8F11DE6D2975210500F2FD06 /* mahjang-calcuratorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8F11DE542975210200F2FD06 /* mahjang-calcurator */ = {
+			isa = PBXGroup;
+			children = (
+				8F86016F2975568C00E65C5C /* Info.plist */,
+				8F11DE552975210200F2FD06 /* mahjang_calcuratorApp.swift */,
+				8F11DE592975210400F2FD06 /* Assets.xcassets */,
+				8F11DE5B2975210400F2FD06 /* mahjang_calcurator.entitlements */,
+				8F146232297A7DFC0046B6F7 /* ShipporiMincho-Bold.ttf */,
+				8F146233297A7DFD0046B6F7 /* ShipporiMincho-Regular.ttf */,
+				8F11DE5C2975210400F2FD06 /* Preview Content */,
+				8FD81D13297686B70055E254 /* TitleView.swift */,
+				8F7814A22977CFA3007B1DB0 /* BattleView.swift */,
+				8F7814A62977ED67007B1DB0 /* Calcurator.swift */,
+				8FAC27C2297801FB00B68741 /* CGPointExtension.swift */,
+				8F7814A42977E66C007B1DB0 /* ColorExtension.swift */,
+				8F11DE572975210200F2FD06 /* CalcurateView.swift */,
+				8FF22ADA298BB79400072039 /* ScoreDataModel.swift */,
+			);
+			path = "mahjang-calcurator";
+			sourceTree = "<group>";
+		};
+		8F11DE5C2975210400F2FD06 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8F11DE5D2975210400F2FD06 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8F11DE662975210500F2FD06 /* mahjang-calcuratorTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F11DE672975210500F2FD06 /* mahjang_calcuratorTests.swift */,
+			);
+			path = "mahjang-calcuratorTests";
+			sourceTree = "<group>";
+		};
+		8F11DE702975210500F2FD06 /* mahjang-calcuratorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8F11DE712975210500F2FD06 /* mahjang_calcuratorUITests.swift */,
+				8F11DE732975210500F2FD06 /* mahjang_calcuratorUITestsLaunchTests.swift */,
+			);
+			path = "mahjang-calcuratorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8F11DE512975210200F2FD06 /* mahjang-calcurator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F11DE772975210500F2FD06 /* Build configuration list for PBXNativeTarget "mahjang-calcurator" */;
+			buildPhases = (
+				8F11DE4E2975210200F2FD06 /* Sources */,
+				8F11DE4F2975210200F2FD06 /* Frameworks */,
+				8F11DE502975210200F2FD06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mahjang-calcurator";
+			productName = "mahjang-calcurator";
+			productReference = 8F11DE522975210200F2FD06 /* mahjang-calcurator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8F11DE622975210500F2FD06 /* mahjang-calcuratorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F11DE7A2975210500F2FD06 /* Build configuration list for PBXNativeTarget "mahjang-calcuratorTests" */;
+			buildPhases = (
+				8F11DE5F2975210500F2FD06 /* Sources */,
+				8F11DE602975210500F2FD06 /* Frameworks */,
+				8F11DE612975210500F2FD06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F11DE652975210500F2FD06 /* PBXTargetDependency */,
+			);
+			name = "mahjang-calcuratorTests";
+			productName = "mahjang-calcuratorTests";
+			productReference = 8F11DE632975210500F2FD06 /* mahjang-calcuratorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8F11DE6C2975210500F2FD06 /* mahjang-calcuratorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F11DE7D2975210500F2FD06 /* Build configuration list for PBXNativeTarget "mahjang-calcuratorUITests" */;
+			buildPhases = (
+				8F11DE692975210500F2FD06 /* Sources */,
+				8F11DE6A2975210500F2FD06 /* Frameworks */,
+				8F11DE6B2975210500F2FD06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F11DE6F2975210500F2FD06 /* PBXTargetDependency */,
+			);
+			name = "mahjang-calcuratorUITests";
+			productName = "mahjang-calcuratorUITests";
+			productReference = 8F11DE6D2975210500F2FD06 /* mahjang-calcuratorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8F11DE4A2975210200F2FD06 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					8F11DE512975210200F2FD06 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					8F11DE622975210500F2FD06 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 8F11DE512975210200F2FD06;
+					};
+					8F11DE6C2975210500F2FD06 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 8F11DE512975210200F2FD06;
+					};
+				};
+			};
+			buildConfigurationList = 8F11DE4D2975210200F2FD06 /* Build configuration list for PBXProject "mahjang-calcurator" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8F11DE492975210200F2FD06;
+			productRefGroup = 8F11DE532975210200F2FD06 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8F11DE512975210200F2FD06 /* mahjang-calcurator */,
+				8F11DE622975210500F2FD06 /* mahjang-calcuratorTests */,
+				8F11DE6C2975210500F2FD06 /* mahjang-calcuratorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8F11DE502975210200F2FD06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F11DE5E2975210400F2FD06 /* Preview Assets.xcassets in Resources */,
+				8F146235297A7DFD0046B6F7 /* ShipporiMincho-Regular.ttf in Resources */,
+				8F146234297A7DFD0046B6F7 /* ShipporiMincho-Bold.ttf in Resources */,
+				8F11DE5A2975210400F2FD06 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F11DE612975210500F2FD06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F11DE6B2975210500F2FD06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8F11DE4E2975210200F2FD06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F11DE582975210200F2FD06 /* CalcurateView.swift in Sources */,
+				8F7814A72977ED67007B1DB0 /* Calcurator.swift in Sources */,
+				8F11DE562975210200F2FD06 /* mahjang_calcuratorApp.swift in Sources */,
+				8F7814A32977CFA3007B1DB0 /* BattleView.swift in Sources */,
+				8F768C2029769F060061CFE2 /* TitleView.swift in Sources */,
+				8F7814A52977E66C007B1DB0 /* ColorExtension.swift in Sources */,
+				8FF22ADB298BB79400072039 /* ScoreDataModel.swift in Sources */,
+				8FAC27C3297801FB00B68741 /* CGPointExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F11DE5F2975210500F2FD06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F11DE682975210500F2FD06 /* mahjang_calcuratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F11DE692975210500F2FD06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F11DE722975210500F2FD06 /* mahjang_calcuratorUITests.swift in Sources */,
+				8F11DE742975210500F2FD06 /* mahjang_calcuratorUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F11DE652975210500F2FD06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F11DE512975210200F2FD06 /* mahjang-calcurator */;
+			targetProxy = 8F11DE642975210500F2FD06 /* PBXContainerItemProxy */;
+		};
+		8F11DE6F2975210500F2FD06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F11DE512975210200F2FD06 /* mahjang-calcurator */;
+			targetProxy = 8F11DE6E2975210500F2FD06 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8F11DE752975210500F2FD06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8F11DE762975210500F2FD06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		8F11DE782975210500F2FD06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "mahjang-calcurator/mahjang_calcurator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mahjang-calcurator/Preview Content\"";
+				DEVELOPMENT_TEAM = RW9N8FZHM7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mahjang-calcurator/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TemBo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = kyami.scoreautomation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8F11DE792975210500F2FD06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "mahjang-calcurator/mahjang_calcurator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mahjang-calcurator/Preview Content\"";
+				DEVELOPMENT_TEAM = RW9N8FZHM7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mahjang-calcurator/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TemBo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = kyami.scoreautomation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8F11DE7B2975210500F2FD06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RW9N8FZHM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kyamisuke.mahjang-calcuratorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mahjang-calcurator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mahjang-calcurator";
+			};
+			name = Debug;
+		};
+		8F11DE7C2975210500F2FD06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RW9N8FZHM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kyamisuke.mahjang-calcuratorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mahjang-calcurator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mahjang-calcurator";
+			};
+			name = Release;
+		};
+		8F11DE7E2975210500F2FD06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RW9N8FZHM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kyamisuke.mahjang-calcuratorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mahjang-calcurator";
+			};
+			name = Debug;
+		};
+		8F11DE7F2975210500F2FD06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RW9N8FZHM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kyamisuke.mahjang-calcuratorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mahjang-calcurator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8F11DE4D2975210200F2FD06 /* Build configuration list for PBXProject "mahjang-calcurator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F11DE752975210500F2FD06 /* Debug */,
+				8F11DE762975210500F2FD06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F11DE772975210500F2FD06 /* Build configuration list for PBXNativeTarget "mahjang-calcurator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F11DE782975210500F2FD06 /* Debug */,
+				8F11DE792975210500F2FD06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F11DE7A2975210500F2FD06 /* Build configuration list for PBXNativeTarget "mahjang-calcuratorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F11DE7B2975210500F2FD06 /* Debug */,
+				8F11DE7C2975210500F2FD06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F11DE7D2975210500F2FD06 /* Build configuration list for PBXNativeTarget "mahjang-calcuratorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F11DE7E2975210500F2FD06 /* Debug */,
+				8F11DE7F2975210500F2FD06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8F11DE4A2975210200F2FD06 /* Project object */;
+}
