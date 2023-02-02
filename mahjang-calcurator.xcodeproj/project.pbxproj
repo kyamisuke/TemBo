@@ -21,7 +21,10 @@
 		8F7814A52977E66C007B1DB0 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7814A42977E66C007B1DB0 /* ColorExtension.swift */; };
 		8F7814A72977ED67007B1DB0 /* Calcurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7814A62977ED67007B1DB0 /* Calcurator.swift */; };
 		8FAC27C3297801FB00B68741 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAC27C2297801FB00B68741 /* CGPointExtension.swift */; };
-		8FF22ADB298BB79400072039 /* ScoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF22ADA298BB79400072039 /* ScoreDataModel.swift */; };
+		8FCDE997298BBC5A0023B9B4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCDE996298BBC5A0023B9B4 /* Config.swift */; };
+		8FCDE999298BBCEC0023B9B4 /* CustomMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */; };
+		8FCDE99B298BDA9D0023B9B4 /* FieldDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCDE99A298BDA9D0023B9B4 /* FieldDataViewModel.swift */; };
+		8FF22ADB298BB79400072039 /* FielldDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF22ADA298BB79400072039 /* FielldDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +63,11 @@
 		8F7814A62977ED67007B1DB0 /* Calcurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calcurator.swift; sourceTree = "<group>"; };
 		8F86016F2975568C00E65C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8FAC27C2297801FB00B68741 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		8FCDE996298BBC5A0023B9B4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMath.swift; sourceTree = "<group>"; };
+		8FCDE99A298BDA9D0023B9B4 /* FieldDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDataViewModel.swift; sourceTree = "<group>"; };
 		8FD81D13297686B70055E254 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
-		8FF22ADA298BB79400072039 /* ScoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDataModel.swift; sourceTree = "<group>"; };
+		8FF22ADA298BB79400072039 /* FielldDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FielldDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +131,10 @@
 				8FAC27C2297801FB00B68741 /* CGPointExtension.swift */,
 				8F7814A42977E66C007B1DB0 /* ColorExtension.swift */,
 				8F11DE572975210200F2FD06 /* CalcurateView.swift */,
-				8FF22ADA298BB79400072039 /* ScoreDataModel.swift */,
+				8FF22ADA298BB79400072039 /* FielldDataModel.swift */,
+				8FCDE996298BBC5A0023B9B4 /* Config.swift */,
+				8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */,
+				8FCDE99A298BDA9D0023B9B4 /* FieldDataViewModel.swift */,
 			);
 			path = "mahjang-calcurator";
 			sourceTree = "<group>";
@@ -289,11 +298,14 @@
 			files = (
 				8F11DE582975210200F2FD06 /* CalcurateView.swift in Sources */,
 				8F7814A72977ED67007B1DB0 /* Calcurator.swift in Sources */,
+				8FCDE99B298BDA9D0023B9B4 /* FieldDataViewModel.swift in Sources */,
+				8FCDE997298BBC5A0023B9B4 /* Config.swift in Sources */,
 				8F11DE562975210200F2FD06 /* mahjang_calcuratorApp.swift in Sources */,
+				8FCDE999298BBCEC0023B9B4 /* CustomMath.swift in Sources */,
 				8F7814A32977CFA3007B1DB0 /* BattleView.swift in Sources */,
 				8F768C2029769F060061CFE2 /* TitleView.swift in Sources */,
 				8F7814A52977E66C007B1DB0 /* ColorExtension.swift in Sources */,
-				8FF22ADB298BB79400072039 /* ScoreDataModel.swift in Sources */,
+				8FF22ADB298BB79400072039 /* FielldDataModel.swift in Sources */,
 				8FAC27C3297801FB00B68741 /* CGPointExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

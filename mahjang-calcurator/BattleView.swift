@@ -8,35 +8,21 @@
 import SwiftUI
 
 struct BattleView: View {
-    let TON = 0
-    let NAN = 1
-    let SHA = 2
-    let PEI = 3
-    let TSUMO = 4
+    @State private var calcurator = Calcurator()
+    @ObservedObject private var fieldDataModel = FieldDataModel()
+    
     @Binding var memberName: [String]
     
     let hanData = [1,2,3,4,5,6,7,8,9,10,11,12,13]
     let fuData = [20,25,30,40,50,60,70,80,90,100,110]
     let tenpaiData = ["ノーテン", "テンパイ"]
     let bakazeData = ["東", "南"]
-    @State private var scoreArray = [25000, 25000, 25000, 25000]
-    @State private var preScore = [25000, 25000, 25000, 25000]
-    @State private var reachArray = [false, false, false, false]
-    @State private var preReach = [false, false, false, false]
     @State private var tenpaiArray = ["ノーテン", "ノーテン", "ノーテン", "ノーテン"]
     @State private var overlay = -1
     @State private var overlayPlayer = -1
     @State private var agari = 0
     @State private var isInputMode = false
     @State private var isRyukyokuMode = false
-    @State private var bakaze = 0
-    @State private var preBakaze = 0
-    @State private var oya = 0
-    @State private var preOya = 0
-    @State private var honba = 0
-    @State private var preHonba = 0
-    @State private var kyoutaku = 0
-    @State private var preKyoutaku = 0
     
     @State private var isChoiced = false
     @State private var start = CGPoint(x: 0, y: 0)
@@ -44,7 +30,6 @@ struct BattleView: View {
     @State var han:Int = 1
     @State var fu:Int = 30
     
-    @State var isDirectlyInput = false
     @State var directScore = "0"
     
     @State var opacity: Double = 0
@@ -61,7 +46,6 @@ struct BattleView: View {
     private let bottomHori = UIScreen.main.bounds.height/3
     private let imageHeight:CGFloat = 32
     private let block:CGFloat = 80
-    @State private var calcurator: Calcurator = Calcurator()
     private let BOLD = "ShipporiMincho-Bold"
     private let REGULAR = "ShipporiMincho-Regular"
     private let MEMBER_TEXT_SIZE:CGFloat = 22
@@ -71,20 +55,20 @@ struct BattleView: View {
     var shaView: some View {
         Group {
             VStack {
-                Image(oya == SHA ? "OyaMark" : "NoOyaMark")
+                Image(fieldDataModel.isOya(member: Config.Member.SHA) ? "OyaMark" : "NoOyaMark")
                     .frame(height: imageHeight)
-                    .animation(.default, value: oya)
-                Text(memberName[SHA])
+                    .animation(.default, value: fieldDataModel.isOya(member: Config.Member.SHA))
+                Text(memberName[Config.Member.SHA])
                     .font(.custom(BOLD, size: MEMBER_TEXT_SIZE))
-                    .frame(width: getCardWidth(str: memberName[SHA]), height: CARD_HEIGHT)
+                    .frame(width: getCardWidth(str: memberName[Config.Member.SHA]), height: CARD_HEIGHT)
                     .foregroundColor(Color.textBlack)
-                    .background(reachArray[SHA] ? Color.reach : .white)
+                    .background(fieldDataModel.isReach(member: Config.Member.SHA) ? Color.reach : .white)
                     .cornerRadius(8)
                     .shadow(radius: 8, x: -8, y: -8)
                     .onTapGesture(perform: {
-                        reachArray[SHA].toggle()
-                        scoreArray[SHA] += reachArray[SHA] ? -1000 : 1000
-                        kyoutaku += reachArray[SHA] ? 1000 : -1000
+                        fieldDataModel.reachArray[Config.Member.SHA].toggle()
+                        fieldDataModel.scores[Config.Member.SHA] += fieldDataModel.reachArray[Config.Member.SHA] ? -1000 : 1000
+                        fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.SHA] ? 1000 : -1000
                     })
                     .gesture(
                         DragGesture(coordinateSpace: .global)
@@ -92,17 +76,17 @@ struct BattleView: View {
                                 isChoiced = true
                                 start = value.startLocation + offset
                                 end = value.location + offset
-                                agari = SHA
+                                agari = Config.Member.SHA
                                 positionCheck()
                             }
                             .onEnded{ value in
                                 overlayCheck()
                             }
                     )
-                    .scaleEffect(overlay == SHA ? 1.2 : 1)
-                    .animation(.default, value: overlay == SHA)
-                    .animation(.easeOut(duration: 0.2), value: reachArray[SHA])
-                Text("\(scoreArray[SHA])")
+                    .scaleEffect(overlay == Config.Member.SHA ? 1.2 : 1)
+                    .animation(.default, value: overlay == Config.Member.SHA)
+                    .animation(.easeOut(duration: 0.2), value: fieldDataModel.reachArray[Config.Member.SHA])
+                Text("\(fieldDataModel.scores[Config.Member.SHA])")
                     .frame(height: 16)
                     .font(.custom(BOLD, size: SCORE_TEXT_SIZE))
                     .foregroundColor(Color.white)
@@ -116,20 +100,20 @@ struct BattleView: View {
     var peiView: some View {
         Group {
             VStack {
-                Image(oya == PEI ? "OyaMark" : "NoOyaMark")
+                Image(fieldDataModel.isOya(member: Config.Member.PEI) ? "OyaMark" : "NoOyaMark")
                     .frame(height: imageHeight)
-                    .animation(.default, value: oya)
-                Text(memberName[PEI])
+                    .animation(.default, value: fieldDataModel.isOya(member: Config.Member.PEI))
+                Text(memberName[Config.Member.PEI])
                     .font(.custom(BOLD, size: MEMBER_TEXT_SIZE))
-                    .frame(width: getCardWidth(str: memberName[PEI]), height: CARD_HEIGHT)
+                    .frame(width: getCardWidth(str: memberName[Config.Member.PEI]), height: CARD_HEIGHT)
                     .foregroundColor(Color.textBlack)
-                    .background(reachArray[PEI] ? Color.reach : .white)
+                    .background(fieldDataModel.reachArray[Config.Member.PEI] ? Color.reach : .white)
                     .cornerRadius(8)
                     .shadow(radius: 8, x: 8, y: -8)
                     .onTapGesture(perform: {
-                        reachArray[PEI].toggle()
-                        scoreArray[PEI] += reachArray[PEI] ? -1000 : 1000
-                        kyoutaku += reachArray[PEI] ? 1000 : -1000
+                        fieldDataModel.reachArray[Config.Member.PEI].toggle()
+                        fieldDataModel.scores[Config.Member.PEI] += fieldDataModel.reachArray[Config.Member.PEI] ? -1000 : 1000
+                        fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.PEI] ? 1000 : -1000
                     })
                     .gesture(
                         DragGesture(coordinateSpace: .global)
@@ -137,17 +121,17 @@ struct BattleView: View {
                                 isChoiced = true
                                 start = value.startLocation + offset
                                 end = value.location + offset
-                                agari = PEI
+                                agari = Config.Member.PEI
                                 positionCheck()
                             }
                             .onEnded{ value in
                                 overlayCheck()
                             }
                     )
-                    .scaleEffect(overlay == PEI ? 1.2 : 1)
-                    .animation(.default, value: overlay == PEI)
-                    .animation(.easeOut(duration: 0.2), value: reachArray[PEI])
-                Text("\(scoreArray[PEI])")
+                    .scaleEffect(overlay == Config.Member.PEI ? 1.2 : 1)
+                    .animation(.default, value: overlay == Config.Member.PEI)
+                    .animation(.easeOut(duration: 0.2), value: fieldDataModel.reachArray[Config.Member.PEI])
+                Text("\(fieldDataModel.scores[Config.Member.PEI])")
                     .frame(height: 16)
                     .font(.custom(BOLD, size: SCORE_TEXT_SIZE))
                     .foregroundColor(Color.white)
@@ -161,20 +145,20 @@ struct BattleView: View {
     var nanView: some View {
         Group {
             VStack {
-                Image(oya == NAN ? "OyaMark" : "NoOyaMark")
+                Image(fieldDataModel.isOya(member: Config.Member.NAN) ? "OyaMark" : "NoOyaMark")
                     .frame(height: imageHeight)
-                    .animation(.default, value: oya)
-                Text(memberName[NAN])
+                    .animation(.default, value: fieldDataModel.isOya(member: Config.Member.NAN))
+                Text(memberName[Config.Member.NAN])
                     .font(.custom(BOLD, size: MEMBER_TEXT_SIZE))
-                    .frame(width: getCardWidth(str: memberName[NAN]), height: CARD_HEIGHT)
+                    .frame(width: getCardWidth(str: memberName[Config.Member.NAN]), height: CARD_HEIGHT)
                     .foregroundColor(Color.textBlack)
-                    .background(reachArray[NAN] ? Color.reach : .white)
+                    .background(fieldDataModel.reachArray[Config.Member.NAN] ? Color.reach : .white)
                     .cornerRadius(8)
                     .shadow(radius: 8, x: -8, y: 8)
                     .onTapGesture(perform: {
-                        reachArray[NAN].toggle()
-                        scoreArray[NAN] += reachArray[NAN] ? -1000 : 1000
-                        kyoutaku += reachArray[NAN] ? 1000 : -1000
+                        fieldDataModel.reachArray[Config.Member.NAN].toggle()
+                        fieldDataModel.scores[Config.Member.NAN] += fieldDataModel.reachArray[Config.Member.NAN] ? -1000 : 1000
+                        fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.NAN] ? 1000 : -1000
                     })
                     .gesture(
                         DragGesture(coordinateSpace: .global)
@@ -182,17 +166,17 @@ struct BattleView: View {
                                 isChoiced = true
                                 start = value.startLocation + offset
                                 end = value.location + offset
-                                agari = NAN
+                                agari = Config.Member.NAN
                                 positionCheck()
                             }
                             .onEnded{ value in
                                 overlayCheck()
                             }
                     )
-                    .scaleEffect(overlay == NAN ? 1.2 : 1)
-                    .animation(.default, value: overlay == NAN)
-                    .animation(.easeOut(duration: 0.2), value: reachArray[NAN])
-                Text("\(scoreArray[NAN])")
+                    .scaleEffect(overlay == Config.Member.NAN ? 1.2 : 1)
+                    .animation(.default, value: overlay == Config.Member.NAN)
+                    .animation(.easeOut(duration: 0.2), value: fieldDataModel.reachArray[Config.Member.NAN])
+                Text("\(fieldDataModel.scores[Config.Member.NAN])")
                     .frame(height: 16)
                     .font(.custom(BOLD, size: SCORE_TEXT_SIZE))
                     .foregroundColor(Color.white)
@@ -207,20 +191,20 @@ struct BattleView: View {
         Group {
             ZStack {
                 VStack {
-                    Image(oya == TON ? "OyaMark" : "NoOyaMark")
+                    Image(fieldDataModel.isOya(member: Config.Member.TON) ? "OyaMark" : "NoOyaMark")
                         .frame(height: imageHeight)
-                        .animation(.default, value: oya)
-                    Text(memberName[TON])
+                        .animation(.default, value: fieldDataModel.isOya(member: Config.Member.TON))
+                    Text(memberName[Config.Member.TON])
                         .font(.custom(BOLD, size: MEMBER_TEXT_SIZE))
-                        .frame(width: getCardWidth(str: memberName[TON]), height: CARD_HEIGHT)
+                        .frame(width: getCardWidth(str: memberName[Config.Member.TON]), height: CARD_HEIGHT)
                         .foregroundColor(Color.textBlack)
-                        .background(reachArray[TON] ? Color.reach : .white)
+                        .background(fieldDataModel.reachArray[Config.Member.TON] ? Color.reach : .white)
                         .cornerRadius(8)
                         .shadow(radius: 8, x: 8, y: 8)
                         .onTapGesture(perform: {
-                            reachArray[TON].toggle()
-                            scoreArray[TON] += reachArray[TON] ? -1000 : 1000
-                            kyoutaku += reachArray[TON] ? 1000 : -1000
+                            fieldDataModel.reachArray[Config.Member.TON].toggle()
+                            fieldDataModel.scores[Config.Member.TON] += fieldDataModel.reachArray[Config.Member.TON] ? -1000 : 1000
+                            fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.TON] ? 1000 : -1000
                         })
                         .gesture(
                             DragGesture(coordinateSpace: .global)
@@ -228,17 +212,17 @@ struct BattleView: View {
                                     isChoiced = true
                                     start = value.startLocation + offset
                                     end = value.location + offset
-                                    agari = TON
+                                    agari = Config.Member.TON
                                     positionCheck()
                                 }
                                 .onEnded{ value in
                                     overlayCheck()
                                 }
                         )
-                        .scaleEffect(overlay == TON ? 1.2 : 1)
-                        .animation(.default, value: overlay == TON)
-                        .animation(.easeOut(duration: 0.2), value: reachArray[TON])
-                    Text("\(scoreArray[TON])")
+                        .scaleEffect(overlay == Config.Member.TON ? 1.2 : 1)
+                        .animation(.default, value: overlay == Config.Member.TON)
+                        .animation(.easeOut(duration: 0.2), value: fieldDataModel.reachArray[Config.Member.TON])
+                    Text("\(fieldDataModel.scores[Config.Member.TON])")
                         .frame(height: 16)
                         .font(.custom(BOLD, size: SCORE_TEXT_SIZE))
                         .foregroundColor(Color.white)
@@ -332,82 +316,38 @@ struct BattleView: View {
                     })
                     .frame(width: block)
                 }
-                if calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: oya == agari).getError().isEmpty {
+                if calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.isOya(member: agari)).getError().isEmpty {
                     if isTsumo() {
-                        Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: oya == agari).getTsumoScoreString(isOya: oya == agari))")
+                        Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.isOya(member: agari)).getTsumoScoreString(isOya: fieldDataModel.isOya(member: agari)))")
                             .frame(width: 300, height: 30)
                             .font(.custom(BOLD, size: 24))
                             .foregroundColor(Color.black)
                     } else {
-                        Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: oya == agari).getScore())点")
+                        Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.isOya(member: agari)).getScore())点")
                             .frame(width: block*2, height: 30)
                             .font(.custom(BOLD, size: 24))
                             .foregroundColor(Color.black)
                     }
                 } else {
-                    Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: oya == agari).getError())")
+                    Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.isOya(member: agari)).getError())")
                         .frame(height: 30)
                         .font(.custom(BOLD, size: 18))
                         .foregroundColor(Color.error)
                 }
                 
                 Button(action: {
-                    print("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: oya == agari).getScore())")
-                    calcurator = calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: oya == agari)
+                    calcurator = calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.isOya(member: agari))
                     if !calcurator.getError().isEmpty {
                         return
                     }
                     
-                    preSave()
-                    if isDirectlyInput {
-                        scoreArray[agari] += Int(directScore)! + kyoutaku + honba * 300
-                        scoreArray[overlay] -= Int(directScore)! + honba * 300
-                    } else {
-                        if isTsumo() {
-                            let score = calcurator.getScore()
-                            if agari == oya {
-                                var all = score / 3
-                                all = calcurator.ceil10decimal(num: all)
-                                for i in TON...PEI {
-                                    if i == agari {
-                                        scoreArray[i] += all * 3 + kyoutaku + honba * 300
-                                    } else {
-                                        scoreArray[i] -= all + honba * 100
-                                    }
-                                }
-                                renchan()
-                            } else {
-                                var oyaHarai = score / 2
-                                var koHarai = score / 4
-                                oyaHarai = calcurator.ceil10decimal(num: oyaHarai)
-                                koHarai = calcurator.ceil10decimal(num: koHarai)
-                                for i in TON...PEI {
-                                    if i == agari {
-                                        scoreArray[i] += (oyaHarai + koHarai * 2) + kyoutaku + honba * 300
-                                    } else {
-                                        if i == oya {
-                                            scoreArray[i] -= oyaHarai + honba * 100
-                                        } else {
-                                            scoreArray[i] -= koHarai + honba * 100
-                                        }
-                                    }
-                                }
-                                oyaNagare()
-                            }
-                        } else {
-                            scoreArray[agari] += calcurator.getScore() + kyoutaku + honba * 300
-                            scoreArray[overlay] -= calcurator.getScore() + honba * 300
-                            
-                            if agari == oya {
-                                renchan()
-                            } else {
-                                oyaNagare()
-                            }
-                        }
-                    }
+                    fieldDataModel.preSave()
+                    // TODO: リファクタする
+                    fieldDataModel.executeScore(isTsumo: isTsumo(), score: calcurator.getScore(), agari: agari, harai: overlay)
+                    
                     isInputMode = false
-                    kyoutaku = 0
-                    reachReset()
+                    fieldDataModel.kyoutaku = 0
+                    fieldDataModel.reachReset()
                     overlayReset()
                 }) {
                     Text("点数計算")
@@ -439,7 +379,7 @@ struct BattleView: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(32)
             VStack {
-                ForEach((TON...PEI), id:\.self) { i in
+                ForEach((Config.Member.TON...Config.Member.PEI), id:\.self) { i in
                     HStack {
                         //Spacer()
                         Text(memberName[i])
@@ -458,31 +398,31 @@ struct BattleView: View {
                     }
                 }
                 Button(action: {
-                    preSave()
+                    fieldDataModel.preSave()
                     let tenpaiCount = tenpaiArray.filter({ $0 == "テンパイ"}).count
                     var isOyaKeizoku = false
                     
-                    for i in TON...PEI {
+                    for i in Config.Member.TON...Config.Member.PEI {
                         if tenpaiCount != 0 && tenpaiCount != 4 {
                             if tenpaiArray[i] == "テンパイ" {
-                                scoreArray[i] += 3000 / tenpaiCount
-                                if oya == i {
+                                fieldDataModel.scores[i] += 3000 / tenpaiCount
+                                if fieldDataModel.isOya(member: i) {
                                     isOyaKeizoku = true
                                 }
                             } else {
-                                scoreArray[i] -= 3000 / (4 - tenpaiCount)
+                                fieldDataModel.scores[i] -= 3000 / (4 - tenpaiCount)
                             }
                         }
                         tenpaiArray[i] = "ノーテン"
                     }
                     
                     if isOyaKeizoku {
-                        renchan()
+                        fieldDataModel.renchan()
                     } else {
-                        ryukyoku()
+                        fieldDataModel.oyaNagare()
                     }
                     
-                    reachReset()
+                    fieldDataModel.reachReset()
                     isRyukyokuMode = false
                 }) {
                     Text("罰符精算")
@@ -543,17 +483,17 @@ struct BattleView: View {
             }
             
             VStack {
-                Text("\(bakazeData[bakaze / 4])\(oya + 1)局")
+                Text("\(bakazeData[fieldDataModel.bakaze / 4])\(fieldDataModel.bakaze % 4 + 1)局")
                     .font(.custom(BOLD, size: 32))
                     .foregroundColor(Color.white)
                     .frame(height: 28)
                     .shadow(radius: 8)
-                Text("\(honba)本場")
+                Text("\(fieldDataModel.honba)本場")
                     .font(.custom(BOLD, size: 20))
                     .foregroundColor(Color.white)
                     .shadow(radius: 10)
                 VStack {
-                    Text("供託: \(kyoutaku)点")
+                    Text("供託: \(fieldDataModel.kyoutaku)点")
                         .font(.custom(BOLD, size: 16))
                         .foregroundColor(Color.white)
                         .shadow(radius: 10)
@@ -607,7 +547,7 @@ struct BattleView: View {
             
             VStack {
                 Button(action: {
-                    returnData()
+                    fieldDataModel.returnData()
                 }) {
                     Image(systemName: "return")
                         .font(.custom(REGULAR, size: 18))
@@ -655,35 +595,15 @@ struct BattleView: View {
         }
     }
     
-    private func renchan() {
-        honba += 1
-    }
-    
-    private func ryukyoku() {
-        honba += 1
-        if bakaze < 7 {
-            bakaze += 1
-            oya = (oya + 1) % 4
-        }
-    }
-    
-    private func oyaNagare() {
-        honba = 0
-        if bakaze < 7 {
-            bakaze += 1
-            oya = (oya + 1) % 4
-        }
-    }
-    
     private func positionCheck() {
         if end.x < leftVert {
-            overlay = PEI
+            overlay = Config.Member.PEI
         } else if end.x > rightVert {
-            overlay = NAN
+            overlay = Config.Member.NAN
         } else if end.y < bottomHori {
-            overlay = SHA
+            overlay = Config.Member.SHA
         } else if end.y > topHori {
-            overlay = TON
+            overlay = Config.Member.TON
         } else {
             overlay = -1
         }
@@ -692,12 +612,6 @@ struct BattleView: View {
     
     private func overlayReset() {
         overlay = -1
-    }
-    
-    private func reachReset() {
-        for i in 0..<4 {
-            reachArray[i] = false
-        }
     }
     
     private func overlayCheck() {
@@ -716,24 +630,6 @@ struct BattleView: View {
     
     private func isTsumo() -> Bool {
         return getOverlayName() == "ツモ"
-    }
-    
-    private func preSave() {
-        preScore = scoreArray
-        preOya = oya
-        preHonba = honba
-        preReach = reachArray
-        preBakaze = bakaze
-        preKyoutaku = kyoutaku
-    }
-    
-    private func returnData() {
-        scoreArray = preScore
-        oya = preOya
-        honba = preHonba
-        reachArray = preReach
-        bakaze = preBakaze
-        kyoutaku = preKyoutaku
     }
 }
 
