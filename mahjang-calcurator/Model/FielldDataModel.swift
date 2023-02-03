@@ -75,6 +75,33 @@ class FieldDataModel:ObservableObject {
         }
     }
     
+    func executeeeRyukyoku(tenpaiCount: Int, tenpaiArray: [String]) {
+        var isOyaKeizoku = false
+        
+        for i in Config.Member.TON...Config.Member.PEI {
+            if tenpaiCount != 0 && tenpaiCount != 4 {
+                if tenpaiArray[i] == "テンパイ" {
+                    scores[i] += 3000 / tenpaiCount
+                    if isOya(member: i) {
+                        isOyaKeizoku = true
+                    }
+                } else {
+                    scores[i] -= 3000 / (4 - tenpaiCount)
+                }
+            } else if tenpaiCount == 4 {
+                isOyaKeizoku = true
+            }
+        }
+        
+        if isOyaKeizoku {
+            renchan()
+        } else {
+            oyaNagare()
+        }
+        
+        reachReset()
+    }
+    
      func renchan() {
         honba += 1
     }
@@ -118,5 +145,11 @@ class FieldDataModel:ObservableObject {
         reachArray = preReach
         bakaze = preBakaze
         kyoutaku = preKyoutaku
+    }
+    
+    func toggleReachState(member: Int) {
+        reachArray[member].toggle()
+        scores[member] += reachArray[member] ? -1000 : 1000
+        kyoutaku += reachArray[member] ? 1000 : -1000
     }
 }

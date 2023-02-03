@@ -42,7 +42,7 @@ class Calcurator  {
             score = fu * 6 * Int(pow(2.0, Double(han + 2)))
             score = ceil10decimal(num: score)
             
-            if han == 4 && score > 12000 || han == 5 {
+            if han == 4 && score > 12000 || han == 5 || fu >= 70 && han == 3 {
                 score = 12000
             } else if han == 6 || han == 7 {
                 score = 18000
@@ -59,7 +59,7 @@ class Calcurator  {
             score = fu * 4 * Int(pow(2.0, Double(han + 2)))
             score = Int(ceil(Double(Double(score) / 100.0)) * 100.0)
 
-            if han == 4 && score > 8000 || han == 5 {
+            if han == 4 && score > 8000 || han == 5 || fu >= 70 && han == 3 {
                 score = 8000
             } else if han == 6 || han == 7 {
                 score = 12000

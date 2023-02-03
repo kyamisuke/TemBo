@@ -66,9 +66,7 @@ struct BattleView: View {
                     .cornerRadius(8)
                     .shadow(radius: 8, x: -8, y: -8)
                     .onTapGesture(perform: {
-                        fieldDataModel.reachArray[Config.Member.SHA].toggle()
-                        fieldDataModel.scores[Config.Member.SHA] += fieldDataModel.reachArray[Config.Member.SHA] ? -1000 : 1000
-                        fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.SHA] ? 1000 : -1000
+                        fieldDataModel.toggleReachState(member: Config.Member.SHA)
                     })
                     .gesture(
                         DragGesture(coordinateSpace: .global)
@@ -111,9 +109,7 @@ struct BattleView: View {
                     .cornerRadius(8)
                     .shadow(radius: 8, x: 8, y: -8)
                     .onTapGesture(perform: {
-                        fieldDataModel.reachArray[Config.Member.PEI].toggle()
-                        fieldDataModel.scores[Config.Member.PEI] += fieldDataModel.reachArray[Config.Member.PEI] ? -1000 : 1000
-                        fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.PEI] ? 1000 : -1000
+                        fieldDataModel.toggleReachState(member: Config.Member.PEI)
                     })
                     .gesture(
                         DragGesture(coordinateSpace: .global)
@@ -156,9 +152,7 @@ struct BattleView: View {
                     .cornerRadius(8)
                     .shadow(radius: 8, x: -8, y: 8)
                     .onTapGesture(perform: {
-                        fieldDataModel.reachArray[Config.Member.NAN].toggle()
-                        fieldDataModel.scores[Config.Member.NAN] += fieldDataModel.reachArray[Config.Member.NAN] ? -1000 : 1000
-                        fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.NAN] ? 1000 : -1000
+                        fieldDataModel.toggleReachState(member: Config.Member.NAN)
                     })
                     .gesture(
                         DragGesture(coordinateSpace: .global)
@@ -202,9 +196,7 @@ struct BattleView: View {
                         .cornerRadius(8)
                         .shadow(radius: 8, x: 8, y: 8)
                         .onTapGesture(perform: {
-                            fieldDataModel.reachArray[Config.Member.TON].toggle()
-                            fieldDataModel.scores[Config.Member.TON] += fieldDataModel.reachArray[Config.Member.TON] ? -1000 : 1000
-                            fieldDataModel.kyoutaku += fieldDataModel.reachArray[Config.Member.TON] ? 1000 : -1000
+                            fieldDataModel.toggleReachState(member: Config.Member.TON)
                         })
                         .gesture(
                             DragGesture(coordinateSpace: .global)
@@ -342,7 +334,6 @@ struct BattleView: View {
                     }
                     
                     fieldDataModel.preSave()
-                    // TODO: リファクタする
                     fieldDataModel.executeScore(isTsumo: isTsumo(), score: calcurator.getScore(), agari: agari, harai: overlay)
                     
                     isInputMode = false
@@ -400,29 +391,11 @@ struct BattleView: View {
                 Button(action: {
                     fieldDataModel.preSave()
                     let tenpaiCount = tenpaiArray.filter({ $0 == "テンパイ"}).count
-                    var isOyaKeizoku = false
                     
-                    for i in Config.Member.TON...Config.Member.PEI {
-                        if tenpaiCount != 0 && tenpaiCount != 4 {
-                            if tenpaiArray[i] == "テンパイ" {
-                                fieldDataModel.scores[i] += 3000 / tenpaiCount
-                                if fieldDataModel.isOya(member: i) {
-                                    isOyaKeizoku = true
-                                }
-                            } else {
-                                fieldDataModel.scores[i] -= 3000 / (4 - tenpaiCount)
-                            }
-                        }
-                        tenpaiArray[i] = "ノーテン"
-                    }
+                    fieldDataModel.executeeeRyukyoku(tenpaiCount: tenpaiCount, tenpaiArray: tenpaiArray)
                     
-                    if isOyaKeizoku {
-                        fieldDataModel.renchan()
-                    } else {
-                        fieldDataModel.oyaNagare()
-                    }
+                    resetTenpaiArray()
                     
-                    fieldDataModel.reachReset()
                     isRyukyokuMode = false
                 }) {
                     Text("罰符精算")
@@ -630,6 +603,12 @@ struct BattleView: View {
     
     private func isTsumo() -> Bool {
         return getOverlayName() == "ツモ"
+    }
+    
+    private func resetTenpaiArray() {
+        for i in Config.Member.TON...Config.Member.PEI {
+            tenpaiArray[i] = "ノーテン"
+        }
     }
 }
 

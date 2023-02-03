@@ -23,7 +23,6 @@
 		8FAC27C3297801FB00B68741 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAC27C2297801FB00B68741 /* CGPointExtension.swift */; };
 		8FCDE997298BBC5A0023B9B4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCDE996298BBC5A0023B9B4 /* Config.swift */; };
 		8FCDE999298BBCEC0023B9B4 /* CustomMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */; };
-		8FCDE99B298BDA9D0023B9B4 /* FieldDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCDE99A298BDA9D0023B9B4 /* FieldDataViewModel.swift */; };
 		8FF22ADB298BB79400072039 /* FielldDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF22ADA298BB79400072039 /* FielldDataModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		8FAC27C2297801FB00B68741 /* CGPointExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
 		8FCDE996298BBC5A0023B9B4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMath.swift; sourceTree = "<group>"; };
-		8FCDE99A298BDA9D0023B9B4 /* FieldDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldDataViewModel.swift; sourceTree = "<group>"; };
 		8FD81D13297686B70055E254 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		8FF22ADA298BB79400072039 /* FielldDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FielldDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +116,10 @@
 		8F11DE542975210200F2FD06 /* mahjang-calcurator */ = {
 			isa = PBXGroup;
 			children = (
+				8FCDE99F298BEEE50023B9B4 /* Model */,
+				8FCDE99E298BEED30023B9B4 /* Tool */,
+				8FCDE99D298BEEB10023B9B4 /* Extension */,
+				8FCDE99C298BEE9A0023B9B4 /* View */,
 				8F86016F2975568C00E65C5C /* Info.plist */,
 				8F11DE552975210200F2FD06 /* mahjang_calcuratorApp.swift */,
 				8F11DE592975210400F2FD06 /* Assets.xcassets */,
@@ -125,16 +127,6 @@
 				8F146232297A7DFC0046B6F7 /* ShipporiMincho-Bold.ttf */,
 				8F146233297A7DFD0046B6F7 /* ShipporiMincho-Regular.ttf */,
 				8F11DE5C2975210400F2FD06 /* Preview Content */,
-				8FD81D13297686B70055E254 /* TitleView.swift */,
-				8F7814A22977CFA3007B1DB0 /* BattleView.swift */,
-				8F7814A62977ED67007B1DB0 /* Calcurator.swift */,
-				8FAC27C2297801FB00B68741 /* CGPointExtension.swift */,
-				8F7814A42977E66C007B1DB0 /* ColorExtension.swift */,
-				8F11DE572975210200F2FD06 /* CalcurateView.swift */,
-				8FF22ADA298BB79400072039 /* FielldDataModel.swift */,
-				8FCDE996298BBC5A0023B9B4 /* Config.swift */,
-				8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */,
-				8FCDE99A298BDA9D0023B9B4 /* FieldDataViewModel.swift */,
 			);
 			path = "mahjang-calcurator";
 			sourceTree = "<group>";
@@ -162,6 +154,43 @@
 				8F11DE732975210500F2FD06 /* mahjang_calcuratorUITestsLaunchTests.swift */,
 			);
 			path = "mahjang-calcuratorUITests";
+			sourceTree = "<group>";
+		};
+		8FCDE99C298BEE9A0023B9B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8FD81D13297686B70055E254 /* TitleView.swift */,
+				8F7814A22977CFA3007B1DB0 /* BattleView.swift */,
+				8F11DE572975210200F2FD06 /* CalcurateView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8FCDE99D298BEEB10023B9B4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8FAC27C2297801FB00B68741 /* CGPointExtension.swift */,
+				8F7814A42977E66C007B1DB0 /* ColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8FCDE99E298BEED30023B9B4 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				8FCDE996298BBC5A0023B9B4 /* Config.swift */,
+				8FCDE998298BBCEC0023B9B4 /* CustomMath.swift */,
+				8F7814A62977ED67007B1DB0 /* Calcurator.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		8FCDE99F298BEEE50023B9B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8FF22ADA298BB79400072039 /* FielldDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +327,6 @@
 			files = (
 				8F11DE582975210200F2FD06 /* CalcurateView.swift in Sources */,
 				8F7814A72977ED67007B1DB0 /* Calcurator.swift in Sources */,
-				8FCDE99B298BDA9D0023B9B4 /* FieldDataViewModel.swift in Sources */,
 				8FCDE997298BBC5A0023B9B4 /* Config.swift in Sources */,
 				8F11DE562975210200F2FD06 /* mahjang_calcuratorApp.swift in Sources */,
 				8FCDE999298BBCEC0023B9B4 /* CustomMath.swift in Sources */,
