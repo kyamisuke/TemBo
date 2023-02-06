@@ -48,13 +48,10 @@ struct BattleView: View {
                     MamberCardView(fieldDataModel: fieldDataModel, fieldState: fieldState, memberNum: Config.Member.SHA, memberName: memberName)
                     Spacer()
                     ZStack {
-                        //Spacer()
                         MamberCardView(fieldDataModel: fieldDataModel, fieldState: fieldState, memberNum: Config.Member.PEI, memberName: memberName)
                             .offset(x: -Config.UI.WIDTH * 0.3, y: 0)
-                        //Spacer(minLength: 140)
                         MamberCardView(fieldDataModel: fieldDataModel, fieldState: fieldState, memberNum: Config.Member.NAN, memberName: memberName)
                             .offset(x: Config.UI.WIDTH * 0.3, y: 0)
-                        //Spacer()
                     }
                     
                     Spacer()
@@ -65,55 +62,9 @@ struct BattleView: View {
             
             CenterInformationView(fieldState: fieldState, fieldDataModel: fieldDataModel)
             
-            VStack {
-                Button(action: {
-                    isAlert = true
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.custom(Config.UI.REGULAR, size: 18))
-                        .frame(width: 48, height: 48)
-                        .foregroundColor(Color("Background"))
-                        .background(Color(.white))
-                        .cornerRadius(24)
-                        //.shadow(radius: 6, x: 6, y: 6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 24)
-                                .stroke(Color("Background"), lineWidth: 3.0)
-                        )
-                }
-                .alert(isPresented: $isAlert) {
-                    Alert(title: Text("終了の時間ですか？"),
-                          message: Text("現在の状況は保存されません。\n本当に終了しますか？"),
-                          primaryButton: .cancel(Text("キャンセル")),
-                          secondaryButton: .destructive(Text("終了"), action: {
-                        withAnimation(.linear) {
-                            isPresented = false
-                        }
-                    }))
-                }
-                Spacer()
-            }
-            .frame(width: Config.UI.WIDTH * 0.9, height: Config.UI.HEIGHT * 0.9, alignment: .topLeading)
+            CloseBattleButtonView(isAlert: $isAlert, isPresented: $isPresented)
             
-            VStack {
-                Button(action: {
-                    fieldDataModel.returnData()
-                }) {
-                    Image(systemName: "return")
-                        .font(.custom(Config.UI.REGULAR, size: 18))
-                        .frame(width: 48, height: 48)
-                        .foregroundColor(Color("Background"))
-                        .background(Color(.white))
-                        .cornerRadius(24)
-                        //.shadow(radius: 6, x: 6, y: 6)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 24)
-                                .stroke(Color("Background"), lineWidth: 3.0)
-                        )
-                }
-                Spacer()
-            }
-            .frame(width: Config.UI.WIDTH * 0.63, height: Config.UI.HEIGHT * 0.9, alignment: .topLeading)
+            ReturnButtonView(fieldDataModel: fieldDataModel)
             
             Rectangle()
                 .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT)
