@@ -108,7 +108,7 @@ struct TitleView: View {
                 }
             }
             if isPresented {
-                BattleView(memberName: $memberName, isPresented: $isPresented)
+                BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: memberName, isPresented: $isPresented)
             }
         }
         

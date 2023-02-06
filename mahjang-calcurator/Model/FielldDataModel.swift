@@ -15,6 +15,7 @@ class FieldDataModel:ObservableObject {
     @Published var honba: Int!
     @Published var bakaze: Int!
     @Published var reachArray: [Bool]!
+    @Published var agari: Int!
     
     var preScores = [25000, 25000, 25000, 25000]
     var preBakaze = 0
@@ -30,9 +31,10 @@ class FieldDataModel:ObservableObject {
         honba = 0
         bakaze = 0
         reachArray = [false, false, false, false]
+        agari = 0
     }
     
-    func executeScore(isTsumo: Bool, score: Int, agari: Int, harai: Int) {
+    func executeScore(isTsumo: Bool, score: Int, harai: Int) {
         if isTsumo {
             if oya[agari] {
                 var all = score / 3
@@ -128,6 +130,10 @@ class FieldDataModel:ObservableObject {
         return oya[member]
     }
     
+    func agariIsOya() -> Bool {
+        return oya[agari]
+    }
+    
     func isReach(member: Int) -> Bool {
         return reachArray[member]
     }
@@ -151,5 +157,9 @@ class FieldDataModel:ObservableObject {
         reachArray[member].toggle()
         scores[member] += reachArray[member] ? -1000 : 1000
         kyoutaku += reachArray[member] ? 1000 : -1000
+    }
+    
+    func updateAgari(agari: Int) {
+        self.agari = agari
     }
 }

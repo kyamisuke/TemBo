@@ -9,10 +9,6 @@ import Foundation
 import SwiftUI
 
 class Calcurator  {
-    let ERROR_MESSAGE_20FU_RON = "20符にロン上がりは存在しません"
-    let ERROR_MESSAGE_20OR25FU_1HAN = "20符、25符に1翻上がりは存在しません"
-    let ERROR_MESSAGE_25FU_2HAN = "25符に2翻ツモ上がりは存在しません"
-    
     private var result: Result!
     
     init() {
@@ -22,17 +18,17 @@ class Calcurator  {
     func calcurate(fu: Int, han: Int, isTsumo: Bool, isOya: Bool) -> Calcurator{
         let calcurator = Calcurator()
         if fu == 20 && !isTsumo {
-            calcurator.result.error = ERROR_MESSAGE_20FU_RON
+            calcurator.result.error = Config.Error.ERROR_MESSAGE_20FU_RON
             return calcurator
         }
         
         if (fu == 20 || fu == 25) && han == 1 {
-            calcurator.result.error = ERROR_MESSAGE_20OR25FU_1HAN
+            calcurator.result.error = Config.Error.ERROR_MESSAGE_20OR25FU_1HAN
             return calcurator
         }
         
         if fu == 25 && han == 2 && isTsumo {
-            calcurator.result.error = ERROR_MESSAGE_25FU_2HAN
+            calcurator.result.error = Config.Error.ERROR_MESSAGE_25FU_2HAN
             return calcurator
         }
         result.error = ""
@@ -40,7 +36,7 @@ class Calcurator  {
         var score: Int!
         if isOya {
             score = fu * 6 * Int(pow(2.0, Double(han + 2)))
-            score = ceil10decimal(num: score)
+            score = CustomMath.ceil10decimal(num: score)
             
             if han == 4 && score > 12000 || han == 5 || fu >= 70 && han == 3 {
                 score = 12000
@@ -57,7 +53,7 @@ class Calcurator  {
             calcurator.result.score = score
         } else {
             score = fu * 4 * Int(pow(2.0, Double(han + 2)))
-            score = Int(ceil(Double(Double(score) / 100.0)) * 100.0)
+            score = CustomMath.ceil10decimal(num: score)
 
             if han == 4 && score > 8000 || han == 5 || fu >= 70 && han == 3 {
                 score = 8000
@@ -91,10 +87,6 @@ class Calcurator  {
     
     func getError() -> String {
         return result.error
-    }
-    
-    func ceil10decimal(num:Int) -> Int {
-        return Int(ceil(Double(Double(num) / 100.0)) * 100.0)
     }
 }
 
