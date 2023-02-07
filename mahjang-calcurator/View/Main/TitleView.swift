@@ -9,72 +9,45 @@ import SwiftUI
 import Combine
 
 struct TitleView: View {
-    enum Field: CaseIterable {
-        case ton
-        case nan
-        case sha
-        case pei
-    }
-    
     let width:CGFloat = 280
     
     @State private var path = [String]()
-//    @State private var ton:String = ""
-//    @State private var nan:String = ""
-//    @State private var sha:String = ""
-//    @State private var pei:String = ""
+    //    @State private var ton:String = ""
+    //    @State private var nan:String = ""
+    //    @State private var sha:String = ""
+    //    @State private var pei:String = ""
     @State var memberName = ["", "", "", ""]
-    let kaze = ["東家（起家）", "南家", "西家", "北家"]
     
     @State var isPresented: Bool = false
     
     @State var isAlert = false
     @State var nameLengthJudges = [false, false, false, false]
     
-    @FocusState private var focusedField: Field?
+    @FocusState var focusedField: Enum.Field?
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Background"), Color("Title")]), startPoint: .top, endPoint: .trailing)
-                .ignoresSafeArea()      // フレームサイズをセーフエリア外まで広げる
-            VStack() {
-                //Spacer()
-                Text("対局者入力")
-                    .font(.custom("ShipporiMincho-Bold", size: 40))
-                    .frame(width: 450, height: 64)
-                    .foregroundColor(Color.white)
-                    .padding()
-                //.background(Color("Title"))
-                Spacer()
-                ScrollView {
+        GeometryReader { _ in
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [Color("Background"), Color("Title")]), startPoint: .top, endPoint: .trailing)
+                    .ignoresSafeArea()      // フレームサイズをセーフエリア外まで広げる
+                VStack() {
+                    //Spacer()
+                    Text("対局者入力")
+                        .font(.custom(Config.UI.BOLD, size: 40))
+                        .frame(width: Config.UI.WIDTH, height: 64)
+                        .foregroundColor(Color.white)
+                        .padding()
+                    //Spacer()
                     Group {
                         ForEach(0..<4) { i in
-                            VStack(alignment: .leading) {
-                                Text(kaze[i])
-                                    .frame(width: 150, height: 40, alignment: .leading)
-                                    .font(.custom("ShipporiMincho-Bold", size: 24))
-                                    .foregroundColor(Color.white)
-                                if nameLengthJudges[i] {
-                                    Text("※5文字以内に納めてください")
-                                        .frame(width: 280, height: 12, alignment: .leading)
-                                        .font(.custom("ShipporiMincho-Bold", size: 12))
-                                        .foregroundColor(Color.error)
-                                }
-                                TextField("なまえ（5文字以内）", text: $memberName[i])
-                                    .focused($focusedField, equals: Field.allCases[i])
-                                    .onReceive(Just(memberName[i])) {_ in
-                                        nameLengthJudges[i] = memberName[i].count > 5
-                                    }
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .frame(width: width)
-                                    .font(.custom("ShipporiMincho-Regular", size: 18))
-                                    .foregroundColor(nameLengthJudges[i] ? Color.error : Color.textBlack)
+                            MemberInputView(nameLengthJudges: $nameLengthJudges, memberName: $memberName, focusedField: _focusedField, i: i)
+                                .zIndex(focusedField == Enum.Field.allCases[i] ? 99 : 1)
+                            if i != 3 {
+                                Rectangle()
+                                    .foregroundColor(Color(white: 0.3, opacity: 0.6))
+                                    .frame(width: width + 40, height: 2)
+                                    .padding(15)
                             }
-                            Rectangle()
-                                .foregroundColor(Color(white: 0.3, opacity: 0.6))
-                                .frame(width: width + 40, height: 2)
-                                .padding(10)
-                            Spacer()
                         }
                         Button(action: {
                             if memberName.contains("") {
@@ -85,7 +58,7 @@ struct TitleView: View {
                             focusedField = nil
                         }) {
                             Text("対局開始")
-                                .font(.custom("ShipporiMincho-Bold", size: 20))
+                                .font(.custom(Config.UI.BOLD, size: 20))
                                 .frame(width: 280, height: 48)
                                 .foregroundColor(Color("Background"))
                                 .background(Color(.white))
@@ -94,7 +67,7 @@ struct TitleView: View {
                                     RoundedRectangle(cornerRadius: 24)
                                         .stroke(Color("Background"), lineWidth: 1.0)
                                 )
-                                //.shadow(radius: 8)
+                            //.shadow(radius: 8)
                         }
                         .alert(isPresented: $isAlert) {
                             Alert(title: Text("おや？"),
@@ -106,12 +79,20 @@ struct TitleView: View {
                         Spacer()
                     }
                 }
+//                Rectangle()
+//                    .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT)
+//                    .ignoresSafeArea()
+//                    .foregroundColor(Color(white: 0, opacity: focusedField != nil ? 0.5 : 0))
+//                    .animation(.default, value: focusedField != nil)
+//                    .onTapGesture(perform: {
+//                        focusedField = nil
+//                    })
+                if isPresented {
+                    BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: memberName, isPresented: $isPresented)
+                }
             }
-            if isPresented {
-                BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: memberName, isPresented: $isPresented)
-            }
+            .frame(width: Config.UI.WIDTH)
         }
-        
     }
 }
 

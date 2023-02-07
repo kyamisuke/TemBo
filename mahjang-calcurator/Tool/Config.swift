@@ -15,6 +15,8 @@ class Config {
         static let SHA = 2
         static let PEI = 3
         static let TSUMO = 4
+        
+        static let KAZE = ["東家（起家）", "南家", "西家", "北家"]
     }
     
     class System {
@@ -42,6 +44,8 @@ class Config {
         
         static let WIDTH = UIScreen.main.bounds.width
         static let HEIGHT = UIScreen.main.bounds.height
+        
+        static let INPUT_WIDTH:CGFloat = 280
     }
     
     class Error {

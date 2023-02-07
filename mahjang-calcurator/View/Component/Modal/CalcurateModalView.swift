@@ -64,6 +64,9 @@ struct CalcurateModalView: View {
                                         .tag(value)
                                 }
                             })
+                            .onChange(of: han) { _ in
+                                calcurator = calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya())
+                            }
                             .frame(width: Config.UI.BLOCK)
                         }
 
@@ -78,23 +81,26 @@ struct CalcurateModalView: View {
                                         .tag(value)
                                 }
                             })
+                            .onChange(of: fu) { _ in
+                                calcurator = calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya())
+                            }
                             .frame(width: Config.UI.BLOCK)
                         }
                     }
                     Group() {
-                        if calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya()).getError().isEmpty && isTsumo() {
+                        if !calcurator.isError() && isTsumo() {
                             Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya()).getTsumoScoreString(isOya: fieldDataModel.agariIsOya()))")
                                 .frame(width: 300, height: 30)
                                 .font(.custom(Config.UI.BOLD, size: 24))
                                 .foregroundColor(Color.black)
                         }
-                        if calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya()).getError().isEmpty && !isTsumo() {
+                        if !calcurator.isError() && !isTsumo() {
                             Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya()).getScore())点")
                                 .frame(width: Config.UI.BLOCK*2, height: 30)
                                 .font(.custom(Config.UI.BOLD, size: 24))
                                 .foregroundColor(Color.black)
                         }
-                        if !calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya()).getError().isEmpty {
+                        if calcurator.isError() {
                             Text("\(calcurator.calcurate(fu: fu, han: han, isTsumo: isTsumo(), isOya: fieldDataModel.agariIsOya()).getError())")
                                 .frame(height: 30)
                                 .font(.custom(Config.UI.BOLD, size: 18))
@@ -136,6 +142,9 @@ struct CalcurateModalView: View {
             }
             .offset(x: -Config.UI.WIDTH / 2 + 36, y: Config.UI.HEIGHT > 800 ? -Config.UI.HEIGHT * 0.32 / 2 + 32 : -Config.UI.HEIGHT * 0.4 / 2 + 32)
         }
+        .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT, alignment: .bottom)
+        .offset(x: 0, y: fieldState.isInputMode ? 0 : 500)
+        .animation(.default, value: fieldState.isInputMode)
     }
     
     private func getOverlayName() -> String {
