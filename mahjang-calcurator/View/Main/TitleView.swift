@@ -49,27 +49,7 @@ struct TitleView: View {
                 ScrollView {
                     Group {
                         ForEach(0..<4) { i in
-                            VStack(alignment: .leading) {
-                                Text(kaze[i])
-                                    .frame(width: 150, height: 40, alignment: .leading)
-                                    .font(.custom("ShipporiMincho-Bold", size: 24))
-                                    .foregroundColor(Color.white)
-                                if nameLengthJudges[i] {
-                                    Text("※5文字以内に納めてください")
-                                        .frame(width: 280, height: 12, alignment: .leading)
-                                        .font(.custom("ShipporiMincho-Bold", size: 12))
-                                        .foregroundColor(Color.error)
-                                }
-                                TextField("なまえ（5文字以内）", text: $memberName[i])
-                                    .focused($focusedField, equals: Field.allCases[i])
-                                    .onReceive(Just(memberName[i])) {_ in
-                                        nameLengthJudges[i] = memberName[i].count > 5
-                                    }
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .frame(width: width)
-                                    .font(.custom("ShipporiMincho-Regular", size: 18))
-                                    .foregroundColor(nameLengthJudges[i] ? Color.error : Color.textBlack)
-                            }
+                            MemberInputView(nameLengthJudges: $nameLengthJudges, memberName: $memberName, i: i)
                             Rectangle()
                                 .foregroundColor(Color(white: 0.3, opacity: 0.6))
                                 .frame(width: width + 40, height: 2)

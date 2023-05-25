@@ -23,6 +23,10 @@ class FieldDataModel:ObservableObject {
     var preHonba = 0
     var preKyoutaku = 0
     var preReach = [false, false, false, false]
+    var kamichaCheckArray = [false, false, false, false]
+    var preKamichaCheckArray = [false, false, false, false]
+    var isRenchan = false
+    var preIsRenchan = false
     
     init() {
         scores = [25000, 25000, 25000, 25000]
@@ -34,7 +38,7 @@ class FieldDataModel:ObservableObject {
         agari = 0
     }
     
-    func executeScore(isTsumo: Bool, score: Int, harai: Int) {
+    func executeScore(isTsumo: Bool, score: Int, harai: Int, toNext: Bool = true) {
         if isTsumo {
             if oya[agari] {
                 var all = score / 3
@@ -66,13 +70,21 @@ class FieldDataModel:ObservableObject {
                 oyaNagare()
             }
         } else {
-            scores[agari] += score + kyoutaku + honba * 300
-            scores[harai] -= score + honba * 300
+            scores[agari] += score// + kyoutaku + honba * 300
+            scores[harai] -= score// + honba * 300
+            kamichaCheckArray[agari] = true
+            isRenchan = isRenchan || oya[agari]
             
-            if oya[agari] {
-                renchan()
-            } else {
-                oyaNagare()
+            if toNext {
+                scores[getKamicha()] += kyoutaku + honba * 300
+                scores[harai] -= honba * 300
+                resetKamichaChecker()
+                if isRenchan {
+                    renchan()
+                } else {
+                    oyaNagare()
+                }
+                isRenchan = false
             }
         }
     }
@@ -124,6 +136,8 @@ class FieldDataModel:ObservableObject {
         preReach = reachArray
         preBakaze = bakaze
         preKyoutaku = kyoutaku
+        preKamichaCheckArray = kamichaCheckArray
+        preIsRenchan = isRenchan
     }
     
     func isOya(member: Int) -> Bool {
@@ -151,6 +165,8 @@ class FieldDataModel:ObservableObject {
         reachArray = preReach
         bakaze = preBakaze
         kyoutaku = preKyoutaku
+        kamichaCheckArray = preKamichaCheckArray
+        isRenchan = preIsRenchan
     }
     
     func toggleReachState(member: Int) {
@@ -161,5 +177,20 @@ class FieldDataModel:ObservableObject {
     
     func updateAgari(agari: Int) {
         self.agari = agari
+    }
+    
+    private func getKamicha() -> Int {
+        var kamicha = 99
+        for (i, checker) in kamichaCheckArray.enumerated() {
+            if checker == false { continue }
+            kamicha = min(kamicha, i)
+        }
+        return kamicha
+    }
+    
+    private func resetKamichaChecker() {
+        for i in (0..<kamichaCheckArray.count) {
+            kamichaCheckArray[i] = false
+        }
     }
 }

@@ -78,14 +78,8 @@ struct BattleView: View {
                 })
         
             CalcurateModalView(fieldDataModel: fieldDataModel, fieldState: fieldState, han: $han, fu: $fu, memberName: memberName)
-                .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT, alignment: .bottom)
-                .offset(x: 0, y: fieldState.isInputMode ? 0 : 500)
-                .animation(.default, value: fieldState.isInputMode)
-            RyukyokuModalView(memberName: memberName, fieldDataModel: fieldDataModel, fieldState: fieldState)
-                .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT, alignment: .bottom)
-                .offset(x: 0, y: fieldState.isRyukyokuMode ? 0 : 500)
-                .animation(.default, value: fieldState.isRyukyokuMode)
                 
+            RyukyokuModalView(memberName: memberName, fieldDataModel: fieldDataModel, fieldState: fieldState)
         }
         .opacity(self.opacity)
         .onAppear {

@@ -88,6 +88,10 @@ class Calcurator  {
     func getError() -> String {
         return result.error
     }
+    
+    func isError() -> Bool {
+        return result.error != ""
+    }
 }
 
 struct Result {

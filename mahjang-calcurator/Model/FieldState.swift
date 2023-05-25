@@ -16,6 +16,8 @@ class FieldState: ObservableObject {
     @Published var overlayPlayer: Int!
     @Published var isInputMode: Bool!
     @Published var isRyukyokuMode: Bool!
+    var isMultiRonMode = false
+    var preOverlay = -1
 
     init() {
         self.isChoiced = false
@@ -50,7 +52,16 @@ class FieldState: ObservableObject {
         isChoiced = false
         
         if overlay != -1 {
-            isInputMode = true
+            if isMultiRonMode {
+                if preOverlay == overlay {
+                    isInputMode = true
+                } else {
+                    overlayReset()
+                }
+            } else {
+                isInputMode = true
+                preOverlay = overlay
+            }
         } else {
             overlayReset()
         }
