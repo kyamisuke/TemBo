@@ -22,7 +22,7 @@ struct CalcurateModalView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT * 0.4)
+                .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT * 0.43)
                 .foregroundColor(Color.white)
                 .cornerRadius(32, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
             Group() {
@@ -159,7 +159,8 @@ struct CalcurateModalView: View {
                             )
                             .padding(5)
                     }
-                    .hidden(haraiCount == 2 || isTsumo())
+                    .opacity(isDisable() ? 0.35 : 1.0)
+                    .disabled(isDisable())
                 }
             }
             Button(action: {
@@ -171,7 +172,7 @@ struct CalcurateModalView: View {
                     .frame(width: 35, height: 35)
                     .foregroundColor(Color("Background"))
             }
-            .offset(x: -Config.UI.WIDTH / 2 + 36, y: -Config.UI.HEIGHT * 0.4 / 2 + 32)
+            .offset(x: -Config.UI.WIDTH / 2 + 36, y: -Config.UI.HEIGHT * 0.43 / 2 + 32)
         }
         .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT, alignment: .bottom)
         .offset(x: 0, y: fieldState.isInputMode ? 0 : 500)
@@ -185,10 +186,15 @@ struct CalcurateModalView: View {
     private func isTsumo() -> Bool {
         return getOverlayName() == "ツモ"
     }
+    
+    private func isDisable() -> Bool {
+        return isTsumo() || haraiCount == 2
+    }
 }
 
 struct CalcurateModalView_Previews: PreviewProvider {
     static var previews: some View {
         CalcurateModalView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), han: Binding.constant(1), fu: Binding.constant(30), memberName: ["だいげん", "しょうさん", "いーそー", "いさんげ"])
+            .previewDevice("iPhone 13 Pro")
     }
 }
