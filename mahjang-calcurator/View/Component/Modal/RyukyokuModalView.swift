@@ -20,7 +20,7 @@ struct RyukyokuModalView: View {
             Rectangle()
                 .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT > 800 ? Config.UI.HEIGHT * 0.38 : Config.UI.HEIGHT * 0.47)
                 .foregroundColor(Color.white)
-                .cornerRadius(32)
+                .cornerRadius(32, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
             VStack {
                 ForEach((Config.Member.TON...Config.Member.PEI), id:\.self) { i in
                     HStack {
@@ -70,6 +70,9 @@ struct RyukyokuModalView: View {
             }
             .offset(x: -Config.UI.WIDTH / 2 + 36, y: Config.UI.HEIGHT > 800 ? -Config.UI.HEIGHT * 0.38 / 2 + 32 : -Config.UI.HEIGHT * 0.47 / 2 + 32)
         }
+        .frame(width: Config.UI.WIDTH, height: Config.UI.HEIGHT, alignment: .bottom)
+        .offset(x: 0, y: fieldState.isRyukyokuMode ? 0 : 500)
+        .animation(.default, value: fieldState.isRyukyokuMode)
     }
     
     private func resetTenpaiArray() {
