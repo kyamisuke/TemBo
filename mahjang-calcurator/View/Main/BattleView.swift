@@ -18,6 +18,7 @@ struct BattleView: View {
         
     @State var opacity: Double = 0
     @Binding var isPresented: Bool
+    @Binding var isContinue: Bool
     
     @State var isAlert = false
         
@@ -62,7 +63,7 @@ struct BattleView: View {
             
             CenterInformationView(fieldState: fieldState, fieldDataModel: fieldDataModel)
             
-            CloseBattleButtonView(isAlert: $isAlert, isPresented: $isPresented)
+            CloseBattleButtonView(isAlert: $isAlert, isPresented: $isPresented, isContinue: $isContinue)
             
             ReturnButtonView(fieldDataModel: fieldDataModel)
             
@@ -93,6 +94,6 @@ struct BattleView: View {
 
 struct BattleView_Previews: PreviewProvider {
     static var previews: some View {
-        BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: ["だいげん", "しょうさん", "いーそー", "いさんげ"], isPresented: Binding.constant(true))
+        BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: ["だいげん", "しょうさん", "いーそー", "いさんげ"], isPresented: Binding.constant(true), isContinue: Binding.constant(false))
     }
 }

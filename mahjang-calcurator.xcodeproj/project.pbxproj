@@ -21,6 +21,7 @@
 		8F15880A298D0A940029FC72 /* FieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F158809298D0A940029FC72 /* FieldState.swift */; };
 		8F15880C298E2EA70029FC72 /* CalcurateModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F15880B298E2EA70029FC72 /* CalcurateModalView.swift */; };
 		8F15880E2990A1E80029FC72 /* RyukyokuModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F15880D2990A1E80029FC72 /* RyukyokuModalView.swift */; };
+		8F3E36462BDF86EF002EED29 /* ReArrangeAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3E36452BDF86EF002EED29 /* ReArrangeAnimationView.swift */; };
 		8F3F0CF22990FBB30031A78B /* ReturnButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F0CF12990FBB30031A78B /* ReturnButtonView.swift */; };
 		8F3F0CF42990FE8C0031A78B /* CloseBattleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F0CF32990FE8C0031A78B /* CloseBattleButtonView.swift */; };
 		8F768C2029769F060061CFE2 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD81D13297686B70055E254 /* TitleView.swift */; };
@@ -75,6 +76,7 @@
 		8F158809298D0A940029FC72 /* FieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldState.swift; sourceTree = "<group>"; };
 		8F15880B298E2EA70029FC72 /* CalcurateModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcurateModalView.swift; sourceTree = "<group>"; };
 		8F15880D2990A1E80029FC72 /* RyukyokuModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RyukyokuModalView.swift; sourceTree = "<group>"; };
+		8F3E36452BDF86EF002EED29 /* ReArrangeAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReArrangeAnimationView.swift; sourceTree = "<group>"; };
 		8F3F0CF12990FBB30031A78B /* ReturnButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturnButtonView.swift; sourceTree = "<group>"; };
 		8F3F0CF32990FE8C0031A78B /* CloseBattleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseBattleButtonView.swift; sourceTree = "<group>"; };
 		8F7814A22977CFA3007B1DB0 /* BattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				8F1588132990ADCC0029FC72 /* Card */,
 				8F15880F2990AD6D0029FC72 /* Modal */,
 				8FBC82D529924D8300AA49C5 /* MemberInputView.swift */,
+				8F3E36452BDF86EF002EED29 /* ReArrangeAnimationView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				8FB9748B2A1E096900A65069 /* PageView.swift in Sources */,
 				8FB9748D2A1E09E700A65069 /* DoubleRonCalcurateModalView.swift in Sources */,
 				8F768C2029769F060061CFE2 /* TitleView.swift in Sources */,
+				8F3E36462BDF86EF002EED29 /* ReArrangeAnimationView.swift in Sources */,
 				8FB974892A1B749D00A65069 /* ViewExtension.swift in Sources */,
 				8F158808298D057C0029FC72 /* MamberCardView.swift in Sources */,
 				8FBC82D42992379500AA49C5 /* Enum.swift in Sources */,
@@ -589,7 +593,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "mahjang-calcurator/mahjang_calcurator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mahjang-calcurator/Preview Content\"";
 				DEVELOPMENT_TEAM = RW9N8FZHM7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -609,11 +613,11 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kyami.scoreautomation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -633,7 +637,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "mahjang-calcurator/mahjang_calcurator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mahjang-calcurator/Preview Content\"";
 				DEVELOPMENT_TEAM = RW9N8FZHM7;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -653,11 +657,11 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kyami.scoreautomation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

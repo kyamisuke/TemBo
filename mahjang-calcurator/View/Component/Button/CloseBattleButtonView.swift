@@ -10,6 +10,7 @@ import SwiftUI
 struct CloseBattleButtonView: View {
     @Binding var isAlert: Bool
     @Binding var isPresented: Bool
+    @Binding var isContinue: Bool
     
     var body: some View {
         VStack {
@@ -35,6 +36,7 @@ struct CloseBattleButtonView: View {
                       secondaryButton: .destructive(Text("終了"), action: {
                     withAnimation(.linear) {
                         isPresented = false
+                        isContinue = true
                     }
                 }))
             }
@@ -46,6 +48,6 @@ struct CloseBattleButtonView: View {
 
 struct CloseBattleButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CloseBattleButtonView(isAlert: Binding.constant(false), isPresented: Binding.constant(true))
+        CloseBattleButtonView(isAlert: Binding.constant(false), isPresented: Binding.constant(true), isContinue: Binding.constant(true))
     }
 }

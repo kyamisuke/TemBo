@@ -33,6 +33,8 @@ struct TitleView: View {
     
     @FocusState private var focusedField: Field?
     
+    @State var isContinue = false
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("Background"), Color("Title")]), startPoint: .top, endPoint: .trailing)
@@ -56,6 +58,7 @@ struct TitleView: View {
                                 .padding(10)
                             Spacer()
                         }
+                        
                         Button(action: {
                             if memberName.contains("") {
                                 isAlert = true
@@ -82,13 +85,34 @@ struct TitleView: View {
                                   dismissButton: .default(Text("戻る")))
                         }
                         .padding(.top, 40)
-                        .padding(.bottom, 20)
-                        Spacer()
+
+                        if isContinue {
+                            Button(action: {
+                                let tmpTon = memberName[0]
+                                memberName[0] = memberName[1]
+                                memberName[1] = memberName[2]
+                                memberName[2] = memberName[3]
+                                memberName[3] = tmpTon
+                            }) {
+                                Text("席を回す")
+                                    .font(.custom("ShipporiMincho-Bold", size: 16))
+                                    .frame(width: 120, height: 40)
+                                    .foregroundColor(Color(.white))
+                                    .background(Color(.clear))
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(Color.white, lineWidth: 1.0)
+                                    )
+                            }
+                            .padding(.bottom, 20)
+                            Spacer()
+                        }
                     }
                 }
             }
             if isPresented {
-                BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: memberName, isPresented: $isPresented)
+                BattleView(fieldDataModel: FieldDataModel(), fieldState: FieldState(), memberName: memberName, isPresented: $isPresented, isContinue: $isContinue)
             }
         }
         
